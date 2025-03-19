@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package authservice;
+
+option go_package = "/protobuff";
+
+service AuthService {
+    rpc Register(RegisterRequest) returns (RegisterResponse) {}
+    rpc Login(LoginRequest) returns (LoginResponse) {}
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+}
+
+message RegisterRequest {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message RegisterResponse {
+    string message = 1;
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string message = 1;
+    string token = 2;
+}
+
+message GetUserRequest {
+    string token = 1;
+}
+
+message GetUserResponse {
+    string message = 1;
+    string id = 2;
+    string name = 3;
+    string email = 4;
+}
